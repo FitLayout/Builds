@@ -4,7 +4,7 @@
  * Created on 8. 2. 2016, 9:21:16 by burgetr
  */
 
-package org.fit.layout.build.medical;
+package org.fit.layout.build.classify;
 
 import java.awt.EventQueue;
 import java.net.URL;

@@ -3,7 +3,7 @@
  *
  * Created on 8. 2. 2016, 23:28:24 by burgetr
  */
-package org.fit.layout.build.medical;
+package org.fit.layout.build.classify;
 
 import java.io.IOException;
 
