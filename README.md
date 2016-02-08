@@ -1,2 +1,2 @@
-# Builds
-Different FitLayout builds for different purposes
+# FitLayout Builds
+Different FitLayout builds for different purposes.
