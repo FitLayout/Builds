@@ -12,6 +12,9 @@ import java.net.URL;
 import javax.script.ScriptException;
 import javax.swing.JFrame;
 
+import org.fit.layout.api.AreaTreeOperator;
+import org.fit.layout.build.classify.tags.AmountTagger;
+import org.fit.layout.classify.op.TagEntitiesOperator;
 import org.fit.layout.tools.BlockBrowser;
 
 /**
@@ -20,6 +23,19 @@ import org.fit.layout.tools.BlockBrowser;
  */
 public class BlockBrowserMedical extends BlockBrowser
 {
+
+    public BlockBrowserMedical()
+    {
+        super();
+        
+        AreaTreeOperator tcls = getProcessor().getOperators().get("FitLayout.Tag.Entities");
+        if (tcls != null && tcls instanceof TagEntitiesOperator)
+        {
+            ((TagEntitiesOperator) tcls).addTagger(new AmountTagger());
+        }
+        else
+            System.err.println("Couldn't configure FitLayout.Tag.Entities!");
+    }
 
     public void initScripts()
     {
@@ -51,13 +67,11 @@ public class BlockBrowserMedical extends BlockBrowser
                     ((BlockBrowserMedical) browser).initScripts();
                     main.setVisible(true);
                     
-                    //String localpath = "file://" + System.getProperty("user.home");
+                    String localpath = "file://" + System.getProperty("user.home");
                     //localpath += "/git/TestingLayout";
             
-                    URL url = new URL("http://cssbox.sf.net/");
-                    //URL url = new URL("http://www.idnes.cz/");
-                    //URL url = new URL("http://olomouc.idnes.cz/rad-nemeckych-rytiru-pozadal-v-restitucich-i-o-hrady-bouzov-a-sovinec-12b-/olomouc-zpravy.aspx?c=A131113_115042_olomouc-zpravy_mip");
-                    //URL url = new URL("http://www.aktualne.cz/");
+                    //URL url = new URL("http://cssbox.sf.net/");
+                    URL url = new URL(localpath + "/nurofen.html");
                     
                     
                     browser.setLocation(url.toString());
