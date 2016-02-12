@@ -23,7 +23,7 @@ function processPage(url)
 	var srcConfig = {
 			width: 1200,
 			height: 800,
-			useVisualBounds: false
+			useVisualBounds: true
 	};
 	srcConfig.url = url;
 	proc.renderPage('FitLayout.CSSBox', srcConfig);
@@ -31,7 +31,7 @@ function processPage(url)
 	//segmentation
 	proc.initAreaTree('FitLayout.Grouping', { preserveAuxAreas: true });
 	//proc.apply('FitLayout.Segm.FindLines', {useConsistentStyle: false, maxLineEmSpace: 1.5});
-	//proc.apply('FitLayout.Segm.HomogeneousLeaves', {});
+	proc.apply('FitLayout.Segm.HomogeneousLeaves', {});
 	//proc.apply('FitLayout.Segm.SuperAreas', {depthLimit: 2});
 	//proc.apply('Ceur.Tag.Class', {});
 	//proc.apply('FitLayout.Tag.Entities', {});
