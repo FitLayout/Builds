@@ -45,7 +45,7 @@ function saveCurrentPage()
 {
 	var savedPage = storage.insertPage(proc.page);
 	storage.addPageToPageSet(savedPage, pageSetName);
-	storage.saveAreaTree(proc.areaTree, null, proc.page.sourceURL);
+	storage.saveAreaTree(proc.areaTree, null, savedPage);
 }
 
 storage.connect("http://localhost:8080/openrdf-sesame/repositories/user");
