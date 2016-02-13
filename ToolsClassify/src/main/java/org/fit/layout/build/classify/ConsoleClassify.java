@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import javax.script.ScriptException;
 
+import org.fit.layout.classify.InstanceExtractor;
 import org.fit.layout.tools.Console;
 
 /**
@@ -17,6 +18,16 @@ import org.fit.layout.tools.Console;
  */
 public class ConsoleClassify extends Console
 {
+    private InstanceExtractor extractor;
+
+    @Override
+    protected void init()
+    {
+        super.init();
+        //custom instance extractor for training data extraction from the annotated pages
+        extractor = new InstanceExtractor(new SimpleFeatureExtractor(), "FitLayout.Annotate");
+        getProcessor().put("extr", extractor);
+    }
 
     @Override
     protected void initSession() throws ScriptException

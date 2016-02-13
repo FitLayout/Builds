@@ -12,6 +12,8 @@ import java.net.URL;
 import javax.script.ScriptException;
 import javax.swing.JFrame;
 
+import org.fit.layout.api.AreaTreeOperator;
+import org.fit.layout.classify.op.VisualClassificationOperator;
 import org.fit.layout.tools.BlockBrowser;
 
 /**
@@ -21,6 +23,20 @@ import org.fit.layout.tools.BlockBrowser;
 public class BlockBrowserClassify extends BlockBrowser
 {
 
+    public BlockBrowserClassify()
+    {
+        super();
+        
+        //register the custom feature extractor to work with the visual classifier
+        AreaTreeOperator vcls = getProcessor().getOperators().get("FitLayout.Tag.Visual");
+        if (vcls != null && vcls instanceof VisualClassificationOperator)
+        {
+            ((VisualClassificationOperator) vcls).setFeatures(new SimpleFeatureExtractor());
+        }
+        else
+            System.err.println("Couldn't configure FitLayout.Tag.Visual!");
+    }
+    
     public void initScripts()
     {
         try
