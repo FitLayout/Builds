@@ -82,7 +82,7 @@ public class SimpleFeatureExtractor extends DefaultFeatureExtractor
     public Instances createEmptyDataset()
     {
         try {
-            return loadArffDatasetResource("eswc_header.arff");
+            return loadArffDatasetResource("header.arff");
         } catch (Exception e) {
             log.error("Couldn't create empty dataset: " + e.getMessage());
             return null;
