@@ -48,15 +48,20 @@ function saveCurrentPage()
 	storage.saveAreaTree(proc.areaTree, null, savedPage);
 }
 
-storage.connect("http://localhost:8080/openrdf-sesame/repositories/user");
-var pset = storage.getPageSet(pageSetName);
-if (pset == null)
+//storage.connect("http://localhost:8080/openrdf-sesame/repositories/user");
+if (storage.connected)
 {
-	storage.createPageSet(pageSetName);
-	for (var i = 0; i < trainingUrls.length; i++)
-		processPage(trainingUrls[i]);
+	var pset = storage.getPageSet(pageSetName);
+	if (pset == null)
+	{
+		storage.createPageSet(pageSetName);
+		for (var i = 0; i < trainingUrls.length; i++)
+			processPage(trainingUrls[i]);
+	}
+	else
+	{
+		println("Training set " + pageSetName + " already exists; exiting.")
+	}
 }
 else
-{
-	println("Training set " + pageSetName + " already exists; exiting.")
-}
+	println("No storage is connected. Try storage.connect().");

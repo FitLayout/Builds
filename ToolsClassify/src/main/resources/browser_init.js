@@ -5,4 +5,4 @@
 annotator.tagType = "FitLayout.Annotate";
 
 //the tag list
-annotator.tags = ["h1", "h2", "h3", "paragraph"];
+annotator.tags = ["h1", "h2", "h3", "paragraph", "pubdate", "author", "place"];
