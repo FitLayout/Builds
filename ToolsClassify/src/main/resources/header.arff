@@ -1,5 +1,5 @@
 @RELATION page
-@ATTRIBUTE class {none,title,pages,authors,veditor,vtitle}
+@ATTRIBUTE class {none,h1,h2,h3,paragraph,pubdate,author,place}
 @ATTRIBUTE fontsize NUMERIC
 @ATTRIBUTE weight NUMERIC 
 @ATTRIBUTE style NUMERIC
