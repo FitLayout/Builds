@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.fit.layout.classify.Tagger;
 import org.fit.layout.classify.TextTag;
+import org.fit.layout.classify.taggers.BaseTagger;
 import org.fit.layout.model.Area;
 import org.fit.layout.model.Tag;
 
@@ -19,12 +19,30 @@ import org.fit.layout.model.Tag;
  * A tagger that tags discovers the amount information (e.g. 200 mg).
  * @author burgetr
  */
-public class AmountTagger implements Tagger
+public class AmountTagger extends BaseTagger
 {
     protected Pattern[] aexpr = {
             Pattern.compile("[0-9]+\\,[0-9]+[\\s\\xA0]+mg"), //number
             Pattern.compile("[1-9][0-9]*[\\s\\xA0]+mg") //integer
     };
+    
+    @Override
+    public String getId()
+    {
+        return "Medical.Tag.Amount";
+    }
+
+    @Override
+    public String getName()
+    {
+        return "Amounts";
+    }
+
+    @Override
+    public String getDescription()
+    {
+        return "A tagger that tags discovers the amount information (e.g. 200 mg).";
+    }
     
     @Override
     public TextTag getTag()
