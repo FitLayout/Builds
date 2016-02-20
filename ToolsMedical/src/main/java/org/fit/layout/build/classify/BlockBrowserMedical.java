@@ -12,9 +12,6 @@ import java.net.URL;
 import javax.script.ScriptException;
 import javax.swing.JFrame;
 
-import org.fit.layout.api.AreaTreeOperator;
-import org.fit.layout.build.classify.tags.AmountTagger;
-import org.fit.layout.classify.op.TagEntitiesOperator;
 import org.fit.layout.tools.BlockBrowser;
 
 /**
@@ -27,14 +24,6 @@ public class BlockBrowserMedical extends BlockBrowser
     public BlockBrowserMedical()
     {
         super();
-        
-        AreaTreeOperator tcls = getProcessor().getOperators().get("FitLayout.Tag.Entities");
-        if (tcls != null && tcls instanceof TagEntitiesOperator)
-        {
-            ((TagEntitiesOperator) tcls).addTagger(new AmountTagger());
-        }
-        else
-            System.err.println("Couldn't configure FitLayout.Tag.Entities!");
     }
 
     public void initScripts()
