@@ -2,9 +2,9 @@
 //used for the initial configuration of the GUIProcessor
 //reference from the default_segm.js script as the default operators on the created tree
 
-proc.apply('FitLayout.Segm.CollapseAreas', {});
-//proc.apply('FitLayout.Segm.SortByLines', {});
-proc.apply('FitLayout.Segm.FindLines', {useConsistentStyle: true, maxLineEmSpace: 1.5});
+//proc.apply('FitLayout.Segm.CollapseAreas', {});
+proc.apply('FitLayout.Segm.SortByLines', {});
+//proc.apply('FitLayout.Segm.FindLines', {useConsistentStyle: true, maxLineEmSpace: 1.5});
 //proc.apply('FitLayout.Segm.MultiLine', {useConsistentStyle: true, maxLineEmSpace: 0.5});
 //proc.apply('Ceur.Tag.Class', {});
 //proc.apply('FitLayout.Segm.HomogeneousLeaves', {});

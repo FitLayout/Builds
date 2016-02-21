@@ -29,7 +29,7 @@ public class MinuteTagger extends NumberTagger
     @Override
     public String getId()
     {
-        return "FitLayout.Tag.Minute";
+        return "FITLayout.Tag.Minute";
     }
 
     @Override

@@ -28,7 +28,7 @@ public class HourTagger extends NumberTagger
     @Override
     public String getId()
     {
-        return "FitLayout.Tag.Hour";
+        return "FITLayout.Tag.Hour";
     }
 
     @Override
