@@ -61,9 +61,9 @@ public class BlockBrowserTimes extends BlockBrowser
             
                     /* SCHEDULES */
                     
-                    URL url = new URL(localpath + "/test/schedule/brno30.pdf");
+                    //URL url = new URL(localpath + "/test/schedule/brno30.pdf");
                     //URL url = new URL(localpath + "/test/schedule/dpmb_z_30.pdf");
-                    //URL url = new URL(localpath + "/test/schedule/dpmb_30_kamenolom.pdf");
+                    URL url = new URL(localpath + "/test/schedule/dpmb_30_kamenolom.pdf");
                     
                     
                     browser.setLocation(url.toString());
