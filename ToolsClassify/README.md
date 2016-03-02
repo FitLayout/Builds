@@ -67,7 +67,7 @@ identified by their names (e.g. `user`). The [Sesame Workbench](http://rdf4j.org
 may be used for creating the new repository. The complete repository URL expected by FITLayout is then
 `sesame:http://localhost:8080/openrdf-sesame/repositories/user`.
 
-In the Browser GUI, the repository may be connected using the **RDF Storage** tab. In the JavaScript console
+In the Browser GUI, the repository may be connected using the `RDF Storage` tab. In the JavaScript console
 the repository is connected using the `storage.connect(url)` command. By default, the repository is connected
 in the console init script [console_init.js](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/resources/console_init.js).
 
@@ -81,18 +81,23 @@ Page Rendering and Annotation
 
 ### Annotation using the Browser GUI
 
-In the Browser GUI, the source page may be loaded by providing its URL in the **Sources** tab. Then, the area tree must
+In the Browser GUI, the source page may be loaded by providing its URL in the `Sources` tab. Then, the area tree must
 be created using the `Segmentator` (just press `Run` in the Segmentator tool bar). The segmentation process may include
 various page preprocessing steps using customizable *operators*. See the `Operators` menu for available operators and
 their configuration.
 
-The **Annotator** tab is used for the page annotation by assigning tags to the detected visual areas. First, the area is
+The `Annotator` tab is used for the page annotation by assigning tags to the detected visual areas. First, the area is
 selected by clicking the corresponding part of the displayed page or by selecting the area in the Area tree on the left.
 Then the corresponding tag is selected through the Annotator GUI and it gets assigned by pressing the `Assign` button.
-Finally, the page may be saved to the RDF storage using the controls in the **RDF Storage** tab.
+The list of tags available for annotation may be configured using the JavaScript API. See the default
+[browser_init.js](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/resources/browser_init.js)
+script for details.
 
-When some page set id selected in the **RDF Storage** tab, the contained pages may be quickly browsed and updated by
-the corresponding controls in the **Annotator** tab in the bottom right corner. This allows to quickly browse and review the
+Finally, the page may be stored or updated in the RDF storage using the controls in the `RDF Storage` tab as described
+in the previous section.
+
+When some page set id selected in the `RDF Storage` tab, the contained pages may be quickly browsed and updated by
+the corresponding controls in the `Annotator` tab in the bottom right corner. This allows to quickly browse and review the
 annotated data set without switching between tabs.
 
 ### Page Batch Download using the Console
@@ -131,9 +136,10 @@ the classification is implemented as an AreaTree operator and it may be configur
 dialog. The corresponding operator is called `Tag visual classes (FitLayout.Tag.Visual)`. It is initialized by the
 training ARFF file generated in the previous step.
 
-When the page segmentation is executed (using the Segmentator `Run`) button in the **Sources** tab, the operator
+When the page segmentation is executed (using the Segmentator `Run`) button in the `Sources` tab, the operator
 automatically assigns the tags to the areas by applying the trained classifier on the visual features of the individual
-visual areas in the new page.
+visual areas in the new page. For highlighting the automatically assigned tags in the Browser just select the root
+area in the Area tree and press the `Classes` button in the top tool bar.
 
 The actual implementation of the classifier may be found in the [VisualClassifier](https://github.com/FitLayout/classify/blob/master/src/main/java/org/fit/layout/classify/VisualClassifier.java)
 class.
