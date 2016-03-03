@@ -13,7 +13,7 @@ different training sets may be created.
 
 The FITLayout provides support for all the above mentioned tasks. This support includes:
 
-- Page rendering and its representaion by an abstract *Area tree*.
+- Page rendering and its representation by an abstract *Area tree*.
 - A graphical user interface with an Annotator plugin that allows to manually assign tags to the individual
 visual areas in the page.
 - A persistent RDF storage connection that is used for storing the annotated pages. The storage is organized
@@ -27,13 +27,13 @@ a look at the [FITLayout manual](http://www.fit.vutbr.cz/~burgetr/FITLayout/manu
 
 Requirements and Installation
 -----------------------------
-FITLayout is an experimental sotware that currectly evolves fast. Therefore, the preferred way of installation
-is cloning the GitHub repositories and compiling the framework maually. All the repositories include the project
-metadata for [Eclipse](http://www.eclipse.org) that allows easy import of the project to the Eclipse IDE. However,
-any other IDE may be used as well, all the project use Maven as the default build tool.
+FITLayout is an experimental software that currently evolves fast. Therefore, the preferred way of installation
+is cloning the GitHub repositories and compiling the framework manually. All the repositories include the project
+metadata for [Eclipse](http://www.eclipse.org) that allow easy import of the project to the Eclipse IDE. However,
+any other IDE may be used as well, all the projects use Maven as the default build tool.
 
 ### Required Projects
-The Classification build depends on the following projects available on GitHub:
+This build depends on the following projects available on GitHub:
 
 #### Page rendering dependencies
 - [CSSBox](https://github.com/radkovo/CSSBox) An experimental HTML/CSS rendering engine used for rendering the input pages.
@@ -55,14 +55,14 @@ Running the Tools
 -----------------
 This build provides two executable classes: the [BlockBrowserClassify](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/java/org/fit/layout/build/classify/BlockBrowserClassify.java)
 which is the GUI browser and [ConsoleClassify](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/java/org/fit/layout/build/classify/ConsoleClassify.java) 
-that provides the JavaScript command line. After installing all the above dependencies, you should be able to run these
+that provides the JavaScript command line. After installing the above dependencies, you should be able to run both
 tools.
 
 RDF Storage Setup
 -----------------
 Current RDF storage implementation requires a [Sesame RDF storage](http://rdf4j.org/) accessible through HTTP 
 (e.g. on `http://localhost:8080/openrdf-sesame`). Current code has been tested with Sesame 2.8.x. After the Sesame
-server has been installed, a new repository should be created for storing the FITLayout data. The repositories are
+server has been installed, a new repository should be created for storing the FITLayout data. The repositories in Sesame are
 identified by their names (e.g. `user`). The [Sesame Workbench](http://rdf4j.org/sesame/2.8/docs/using+sesame.docbook?view#Sesame_Workbench)
 may be used for creating the new repository. The complete repository URL expected by FITLayout is then
 `sesame:http://localhost:8080/openrdf-sesame/repositories/user`.
@@ -83,12 +83,12 @@ Page Rendering and Annotation
 
 In the Browser GUI, the source page may be loaded by providing its URL in the `Sources` tab. Then, the area tree must
 be created using the `Segmentator` (just press `Run` in the Segmentator tool bar). The segmentation process may include
-various page preprocessing steps using customizable *operators*. See the `Operators` menu for available operators and
-their configuration.
+various page preprocessing steps implemented by a customizable set of *operators*. See the `Operators` menu for available
+operators and their configuration.
 
 The `Annotator` tab is used for the page annotation by assigning tags to the detected visual areas. First, the area is
 selected by clicking the corresponding part of the displayed page or by selecting the area in the Area tree on the left.
-Then the corresponding tag is selected through the Annotator GUI and it gets assigned by pressing the `Assign` button.
+Then, the corresponding tag is selected through the Annotator GUI and it gets assigned by pressing the `Assign` button.
 The list of tags available for annotation may be configured using the JavaScript API. See the default
 [browser_init.js](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/resources/browser_init.js)
 script for details.
@@ -97,37 +97,39 @@ Finally, the page may be stored or updated in the RDF storage using the controls
 in the previous section.
 
 When some page set id selected in the `RDF Storage` tab, the contained pages may be quickly browsed and updated by
-the corresponding controls in the `Annotator` tab in the bottom right corner. This allows to quickly browse and review the
-annotated data set without switching between tabs.
+the corresponding controls directly in the `Annotator` tab (in the bottom right corner). This allows to quickly browse
+and review the annotated data set without switching between the tabs.
 
 ### Page Batch Download using the Console
 
 Using the JavaScript console, it is possible to automate the page downloading, pre-processing and storing in the RDF
 storage. The example [create_training_set.js](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/resources/create_training_set.js)
-script downloads a set of pages, applies some standard pre-processing steps and creates a `Training` page set in the
+script downloads a set of pages, applies some standard preprocessing steps and creates a `Training` page set in the
 RDF storage that contains the downloaded pages. Then, it is possible to browse and annotate the training set using
 the Browser GUI as described above.
 
 Classification
 --------------
-The basic idea of the classification approach is that the important parts of the content may be recognized by their
-visual (and other properties). FITLayout allows to customize the actual set of features that are used for this purpose.
+The basic idea of the classification approach is that the important parts of content may be recognized by their
+visual (and other) properties. FITLayout allows to customize the actual set of features that are used for this purpose.
 The features and the way of their computation is specified by implementing a 
 [FeatureExtractor](https://github.com/FitLayout/classify/blob/master/src/main/java/org/fit/layout/classify/FeatureExtractor.java).
-In this build we provide an example [SimpleFeatureExtractor](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/java/org/fit/layout/build/classify/SimpleFeatureExtractor.java)
-that is based on the font properties, text properties and some more simple features.
+In this build, we provide an example [SimpleFeatureExtractor](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/java/org/fit/layout/build/classify/SimpleFeatureExtractor.java)
+that uses the font properties, text properties and some more simple features. For real applications, it will be probably
+necessary to experimentally improve the set of features for achieving the best classification performance.
 
-Currently the training data is represented using the [WEKA](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) data
+Currently, the training data is represented using the [WEKA](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) data
 structures such as [Instance](http://weka.sourceforge.net/doc.dev/weka/core/Instance.html). The expected structure
 of the data instances is specified in the [header.arff](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/resources/header.arff)
 file. This structure (i.e. the number of extracted values and their type) must be consistent with the used feature extractor.
 
 ### Training Dataset Creation
 
-The [extract_training_data.js] script gives an example of creating a training data set from the annotated set of pages.
+The [extract_training_data.js](https://github.com/FitLayout/Builds/blob/master/ToolsClassify/src/main/resources/extract_training_data.js)
+script gives an example of creating a training data set from the annotated set of pages.
 It takes the pages in the `Training` page set, extracts the features of every visual area in these pages using the
-feature extractor and saves the extracted data set to a local file using in the ARFF format. This file may be later
-used for training any WEKA classifier.
+feature extractor and saves the extracted data set to a local file in the [ARFF](https://weka.wikispaces.com/ARFF+%28stable+version%29)
+format. This file may be later used for training any WEKA classifier.
 
 ### Classification of New Pages
 
@@ -142,4 +144,5 @@ visual areas in the new page. For highlighting the automatically assigned tags i
 area in the Area tree and press the `Classes` button in the top tool bar.
 
 The actual implementation of the classifier may be found in the [VisualClassifier](https://github.com/FitLayout/classify/blob/master/src/main/java/org/fit/layout/classify/VisualClassifier.java)
-class.
+class. It is based on the classifiers available in the WEKA package. However, since the classifier forms quite an independent
+unit in FITLayout, it is possible to implement new classifiers using other backend libraries as well.
