@@ -1,5 +1,8 @@
 //common project-specific configuration
 
+//rhino compatibility workaround, println should be replaced by print in all occurences
+if (typeof println == 'undefined') this.println = print;
+
 println("WELCOME!");
 
 //CSSBox default redndering parametres
