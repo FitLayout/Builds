@@ -21,6 +21,9 @@ import org.fit.layout.model.Tag;
  */
 public class AmountTagger extends BaseTagger
 {
+    private static final float YES = 0.9f;
+    private static final float NO = 0.0f;
+
     protected Pattern[] aexpr = {
             Pattern.compile("[0-9]+\\,[0-9]+[\\s\\xA0]+mg"), //number
             Pattern.compile("[1-9][0-9]*[\\s\\xA0]+mg") //integer
@@ -51,13 +54,7 @@ public class AmountTagger extends BaseTagger
     }
 
     @Override
-    public double getRelevance()
-    {
-        return 0.9;
-    }
-    
-    @Override
-    public boolean belongsTo(Area node)
+    public float belongsTo(Area node)
     {
         if (node.isLeaf())
         {
@@ -65,10 +62,10 @@ public class AmountTagger extends BaseTagger
             for (Pattern p : aexpr)
             {
                 if (p.matcher(text).find()) 
-                    return true;
+                    return YES;
             }
         }
-        return false;
+        return NO;
     }
     
     @Override
@@ -100,6 +97,15 @@ public class AmountTagger extends BaseTagger
                 ret.add(match.group());
             }
         }
+        return ret;
+    }
+    
+    @Override
+    public List<String> split(String src)
+    {
+        // TODO splitting is not implemented for this tagger; the whole string is returned
+        List<String> ret = new ArrayList<String>(1);
+        ret.add(src);
         return ret;
     }
 
