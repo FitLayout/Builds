@@ -70,10 +70,11 @@ public class BlockBrowserClassify extends BlockBrowser
                     //String localpath = "file://" + System.getProperty("user.home");
                     //localpath += "/git/TestingLayout";
             
-                    URL url = new URL("http://cssbox.sf.net/");
+                    //URL url = new URL("http://cssbox.sf.net/");
                     //URL url = new URL("http://www.idnes.cz/");
                     //URL url = new URL("http://olomouc.idnes.cz/rad-nemeckych-rytiru-pozadal-v-restitucich-i-o-hrady-bouzov-a-sovinec-12b-/olomouc-zpravy.aspx?c=A131113_115042_olomouc-zpravy_mip");
                     //URL url = new URL("http://www.aktualne.cz/");
+                    URL url = new URL("http://www.reuters.com/article/us-usa-election-idUSKCN0XN12P");
                     
                     
                     browser.setLocation(url.toString());
