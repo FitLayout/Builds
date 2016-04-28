@@ -9,7 +9,8 @@ var trainingUrls = [
    'http://www.reuters.com/article/space-gravitywaves-idUSKCN0VK1RT',
    'http://www.reuters.com/article/us-elonmusk-investors-insight-idUSKCN0VK2NL',
    'http://www.reuters.com/article/us-space-launch-mold-idUSKCN0VK014',
-   'http://www.reuters.com/article/us-tanzania-poaching-insight-idUSKCN0VJ0FZ'
+   //'http://www.reuters.com/article/us-tanzania-poaching-insight-idUSKCN0VJ0FZ',
+   'http://www.reuters.com/article/us-usa-election-idUSKCN0XN12P'
 ];
 
 var pageSetName = 'Training';
@@ -29,7 +30,7 @@ function processPage(url)
 	proc.renderPage('FitLayout.CSSBox', srcConfig);
 
 	//segmentation
-	proc.initAreaTree('FitLayout.Grouping', { preserveAuxAreas: true });
+	proc.initAreaTree('FitLayout.Grouping', { preserveAuxAreas: false });
 	//proc.apply('FitLayout.Segm.FindLines', {useConsistentStyle: false, maxLineEmSpace: 1.5});
 	proc.apply('FitLayout.Segm.HomogeneousLeaves', {});
 	//proc.apply('FitLayout.Segm.SuperAreas', {depthLimit: 2});
