@@ -1,1 +1,0 @@
-//gui browser initialization script
