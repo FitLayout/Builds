@@ -7,13 +7,10 @@
 //proc.apply('FitLayout.Segm.FindLines', {useConsistentStyle: true, maxLineEmSpace: 1.5});
 //proc.apply('FitLayout.Segm.MultiLine', {useConsistentStyle: true, maxLineEmSpace: 0.5});
 //proc.apply('Ceur.Tag.Class', {});
-proc.apply('FitLayout.Segm.HomogeneousLeaves', {});
+//proc.apply('FitLayout.Segm.HomogeneousLeaves', {});
 //proc.apply('FitLayout.Segm.GroupByDOM', {});
 //proc.apply('FitLayout.Segm.SuperAreas', {depthLimit: 1});
-
-//proc.apply('FitLayout.Tag.Entities', {});
-proc.apply('FitLayout.Tag.Visual', {trainFile: "res:reuters_simple.arff", classIndex: 0});
-//proc.apply('FitLayout.Tag.Visual', {trainFile: "/tmp/test.arff", classIndex: 0});
+proc.apply('FitLayout.Segm.GroupByExample', {});
 
 //proc.apply('Eswc.Tag.Titles', {});
 //proc.apply('Eswc.Tag.Pairs', {});
