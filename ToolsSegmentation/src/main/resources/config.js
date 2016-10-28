@@ -12,5 +12,5 @@ proc.setServiceParams("FitLayout.CSSBox", {
 //Segmentation parametres
 //see default_operators.js for the operators
 proc.setServiceParams("FitLayout.Grouping", {
-	preserveAuxAreas: true
+	preserveAuxAreas: false
 });
