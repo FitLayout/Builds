@@ -6,7 +6,8 @@ println("SEGM");
 proc.setServiceParams("FitLayout.CSSBox", {
 	width: 1200,
 	height: 800,
-	useVisualBounds: false
+	useVisualBounds: false,
+	replaceImagesWithAlt: false
 });
 
 //Segmentation parametres

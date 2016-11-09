@@ -63,7 +63,8 @@ public class BlockBrowserSegm extends BlockBrowser
                     localpath += "/git/TestingLayout";
             
                     
-                    URL url = new URL(localpath + "/test/ceur/volumes/Vol-1317.html");
+                    //URL url = new URL(localpath + "/test/ceur/volumes/Vol-1317.html");
+                    URL url = new URL("https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html");
                     
                     browser.setLocation(url.toString());
                         
