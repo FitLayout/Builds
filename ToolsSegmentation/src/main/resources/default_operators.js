@@ -10,6 +10,7 @@
 //proc.apply('FitLayout.Segm.HomogeneousLeaves', {});
 //proc.apply('FitLayout.Segm.GroupByDOM', {});
 //proc.apply('FitLayout.Segm.SuperAreas', {depthLimit: 1});
+proc.apply('FitLayout.Segm.FlattenTree', {});
 proc.apply('FitLayout.Segm.GroupByExample', {});
 
 //proc.apply('Eswc.Tag.Titles', {});
