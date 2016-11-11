@@ -5,6 +5,10 @@
  */
 package org.fit.layout.build.segm;
 
+import java.io.IOException;
+
+import javax.script.ScriptException;
+
 import org.fit.layout.tools.Console;
 
 /**
@@ -14,12 +18,30 @@ import org.fit.layout.tools.Console;
 public class ConsoleSegm extends Console
 {
 
-    /**
-     * @param args
-     */
+    @Override
+    protected void initSession() throws ScriptException
+    {
+        super.initSession();
+        getProcessor().execInternal("config.js");
+        getProcessor().execInternal("console_init.js");
+    }
+
+    public void browser()
+    {
+        BlockBrowserSegm.main(new String[0]);
+    }
+    
     public static void main(String[] args)
     {
-        Console.main(args);
+        System.out.println("FitLayout interactive console [Segmentation]");
+        Console con = new ConsoleSegm();
+        try
+        {
+            con.interactiveSession(System.in, System.out, System.err);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

@@ -121,6 +121,15 @@ public class PageLoader implements Output {
 
         return viewport;
     }
+    
+    public void setViewport(Viewport view) {
+        BufferedImage img = new BufferedImage(view.getWidth(), view.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D ig = img.createGraphics();
+        ModelRenderer r = new ModelRenderer(img, ig);
+        view.draw(r);
+        this.renderer = r;
+        this.viewport = view;
+    }
 
     public Viewport getViewport(Dimension dim) throws IOException, SAXException, Exception {
         if (this.viewport != null) {
