@@ -30,6 +30,7 @@ function processPage(url)
 	proc.initAreaTree('FitLayout.Grouping', { preserveAuxAreas: false });
 	proc.apply('FitLayout.Segm.FlattenTree', {});
 	proc.apply('FitLayout.Segm.GroupByExample', {});
+	proc.apply('FitLayout.Out.Groups', {});
 	
 	//save the result
 	//saveCurrentPage();

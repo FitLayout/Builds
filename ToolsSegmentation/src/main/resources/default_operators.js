@@ -12,6 +12,7 @@
 //proc.apply('FitLayout.Segm.SuperAreas', {depthLimit: 1});
 proc.apply('FitLayout.Segm.FlattenTree', {});
 proc.apply('FitLayout.Segm.GroupByExample', {});
+proc.apply('FitLayout.Out.Groups', {});
 
 //proc.apply('Eswc.Tag.Titles', {});
 //proc.apply('Eswc.Tag.Pairs', {});
