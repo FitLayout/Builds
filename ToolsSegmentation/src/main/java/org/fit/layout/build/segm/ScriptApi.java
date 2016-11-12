@@ -54,9 +54,8 @@ public class ScriptApi implements ScriptObject
         werr = new PrintWriter(err);
     }
     
-    public void saveReference(String uri, Viewport vp)
+    public void saveReference(String uri, Viewport vp, String destdir, String nameBase)
     {
-        String home = "/tmp/";
         URL url = null;
         try
         {
@@ -72,16 +71,12 @@ public class ScriptApi implements ScriptObject
          */
         PageLoader pl = new PageLoader(url);
         pl.setViewport(vp);
-
-        /* Just an example, any other prefix can be used */
-        String nameBase = url.getHost().replaceAll("[^a-zA-Z0-9\\-]+", "-");
-
         /* Store the abstracted image of the processed web page and all the
          * other files*/
-        pl.save(home + nameBase + ".png");
+        pl.save(destdir + "/" + nameBase + ".png");
         try
         {
-            produceData(home, nameBase, vp);
+            produceData(destdir + "/", nameBase, vp);
         } catch (Exception e) {
             werr.println(e.getMessage());
         }
@@ -92,10 +87,6 @@ public class ScriptApi implements ScriptObject
         BCSProcessor bcs = null;
         VIPSProcessor vips = null;
         Rectangle r;
-
-        if (basePath == null) {
-            basePath = System.getProperty("user.home")+"/";
-        }
 
         r = new Rectangle(view.getWidth(), view.getHeight());
         bcs = new BCSProcessor(basePath, nameBase, r, view.getRootBox());

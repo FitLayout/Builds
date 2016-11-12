@@ -20,13 +20,19 @@ import org.fit.layout.model.Rectangular;
  */
 public class GroupsOutputOperator extends BaseOperator
 {
-    protected final String[] paramNames = {};
-    protected final ValueType[] paramTypes = {};
-    
+    protected final String[] paramNames = { "filename" };
+    protected final ValueType[] paramTypes = { ValueType.STRING };
 
+    private String filename;
     
     public GroupsOutputOperator()
     {
+        filename = "/tmp/out-groups.txt";
+    }
+    
+    public GroupsOutputOperator(String filename)
+    {
+        this.filename = filename;
     }
     
     @Override
@@ -59,6 +65,16 @@ public class GroupsOutputOperator extends BaseOperator
         return paramTypes;
     }
 
+    public String getFilename()
+    {
+        return filename;
+    }
+
+    public void setFilename(String filename)
+    {
+        this.filename = filename;
+    }
+
     //==============================================================================
 
     @Override
@@ -72,7 +88,7 @@ public class GroupsOutputOperator extends BaseOperator
     {
         try
         {
-            PrintWriter out = new PrintWriter("/tmp/out-groups.txt");
+            PrintWriter out = new PrintWriter(filename);
             recursiveOutputGroups(root, out);
             out.close();
         } catch (FileNotFoundException e) {

@@ -6,6 +6,14 @@
 storage.connect("sesame:http://localhost:8080/openrdf-sesame/repositories/user");
 //storage.connect("blazegraph:http://localhost:8080/blazegraph");
 
+var DESTDIR = "/tmp";
+
+function getBaseName(url)
+{
+	pathArray = url.split( '/' );
+	host = pathArray[2];
+	return host.replaceAll("[^a-zA-Z0-9\\-]+", "-");
+}
 
 function processPage(url)
 {
@@ -24,13 +32,13 @@ function processPage(url)
 
 	//BCS and VIPS output
 	var vp = proc.boxProviders.get('FitLayout.CSSBox').viewport;
-	eval.saveReference(url, vp);
+	eval.saveReference(url, vp, DESTDIR, getBaseName(url));
 	
 	//segmentation
 	proc.initAreaTree('FitLayout.Grouping', { preserveAuxAreas: false });
 	proc.apply('FitLayout.Segm.FlattenTree', {});
 	proc.apply('FitLayout.Segm.GroupByExample', {});
-	proc.apply('FitLayout.Out.Groups', {});
+	proc.apply('FitLayout.Out.Groups', { filename: DESTDIR+"/"+getBaseName(url)+'-groups.txt' });
 	
 	//save the result
 	//saveCurrentPage();
