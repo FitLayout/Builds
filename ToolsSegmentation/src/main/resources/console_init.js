@@ -8,6 +8,27 @@ storage.connect("sesame:http://localhost:8080/openrdf-sesame/repositories/user")
 
 var DESTDIR = "/tmp";
 
+function configureExample(pageSet, index)
+{
+	var pset = storage.getPageSet(pageSet);
+	var pages = pset.iterator();
+	var pi = 0;
+	while (pages.hasNext())
+	{
+		var page = pages.next();
+		if (pi == index)
+		{
+			println("Template page: " + page)
+			var treeUris = storage.getAreaTreeURIs(page);
+			println("Using template: " + treeUris[0]);
+			var atree = storage.loadAreaTree(treeUris[0], page);
+			var op = proc.operators.get('FitLayout.Segm.GroupByExample');
+			op.setExampleTree(atree);
+		}
+		pi++;
+	}
+}
+
 function getBaseName(url)
 {
 	pathArray = url.split( '/' );
@@ -45,4 +66,5 @@ function processPage(url)
 	println("... DONE");
 }
 
-processPage('https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html');
+//configureExample('Segm', 0);
+//processPage('https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html');
