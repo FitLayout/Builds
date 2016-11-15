@@ -6,7 +6,7 @@ println("SEGM");
 proc.setServiceParams("FitLayout.CSSBox", {
 	width: 1200,
 	height: 800,
-	useVisualBounds: true,
+	useVisualBounds: false,
 	preserveAux: true,
 	replaceImagesWithAlt: false
 });

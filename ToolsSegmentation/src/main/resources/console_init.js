@@ -46,6 +46,7 @@ function processPage(url)
 			width: 1200,
 			height: 800,
 			useVisualBounds: false,
+			preserveAux: true,
 			replaceImagesWithAlt: false
 	};
 	srcConfig.url = url;
