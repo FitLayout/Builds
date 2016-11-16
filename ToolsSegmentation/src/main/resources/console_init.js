@@ -6,7 +6,7 @@
 storage.connect("sesame:http://localhost:8080/openrdf-sesame/repositories/user");
 //storage.connect("blazegraph:http://localhost:8080/blazegraph");
 
-var DESTDIR = "/tmp";
+var DESTDIR = system.getProperty('user.home') + "/local/segm";
 
 function configureExample(pageSet, index)
 {
@@ -36,7 +36,7 @@ function getBaseName(url)
 	return host.replaceAll("[^a-zA-Z0-9\\-]+", "-");
 }
 
-function processPage(url)
+function processPage(url, destdir)
 {
 	println("");
 	println("*** START " + url);
@@ -54,18 +54,32 @@ function processPage(url)
 
 	//BCS and VIPS output
 	var vp = proc.boxProviders.get('FitLayout.CSSBox').viewport;
-	eval.saveReference(url, vp, DESTDIR, getBaseName(url));
+	eval.saveReference(url, vp, destdir, getBaseName(url));
 	
 	//segmentation
 	proc.initAreaTree('FitLayout.Grouping', { preserveAuxAreas: false });
 	proc.apply('FitLayout.Segm.FlattenTree', {});
 	proc.apply('FitLayout.Segm.GroupByExample', {});
-	proc.apply('FitLayout.Out.Groups', { filename: DESTDIR+"/"+getBaseName(url)+'-groups.txt' });
+	proc.apply('FitLayout.Out.Groups', { filename: destdir+"/"+getBaseName(url)+'-groups.txt' });
 	
-	//save the result
-	//saveCurrentPage();
+	proc.drawToImageWithAreas(destdir+"/"+getBaseName(url)+'-groups.png', '<area');
+	
 	println("... DONE");
 }
 
+function processAllPages(listfile, destdir)
+{
+	var list = system.readLines(listfile);
+	for (var i = 0; i < list.length; i++)
+	{
+		var dest = destdir + "/" + (i+1);
+		system.mkdir(dest);
+		processPage(list[i], dest)
+	}
+}
+
 //configureExample('Segm', 0);
+//var destdir = DESTDIR + "/novinky";
+//processAllPages(destdir + "/urls", destdir);
+
 //processPage('https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html');
