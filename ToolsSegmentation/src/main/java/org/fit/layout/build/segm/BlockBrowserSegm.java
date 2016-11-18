@@ -64,7 +64,8 @@ public class BlockBrowserSegm extends BlockBrowser
             
                     
                     //URL url = new URL(localpath + "/test/ceur/volumes/Vol-1317.html");
-                    URL url = new URL("https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html");
+                    //URL url = new URL("https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html");
+                    URL url = new URL("http://www.businessinsider.com/mike-pompeo-cia-director-trump-2016-11");
                     
                     browser.setLocation(url.toString());
                         
