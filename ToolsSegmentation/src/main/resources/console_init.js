@@ -8,26 +8,6 @@ storage.connect("sesame:http://localhost:8080/openrdf-sesame/repositories/user")
 
 var DESTDIR = system.getProperty('user.home') + "/local/segm";
 
-function configureExample(pageSet, index)
-{
-	var pset = storage.getPageSet(pageSet);
-	var pages = pset.iterator();
-	var pi = 0;
-	while (pages.hasNext())
-	{
-		var page = pages.next();
-		if (pi == index)
-		{
-			println("Template page: " + page)
-			var treeUris = storage.getAreaTreeURIs(page);
-			println("Using template: " + treeUris[0]);
-			var atree = storage.loadAreaTree(treeUris[0], page);
-			var op = proc.operators.get('FitLayout.Segm.GroupByExample');
-			op.setExampleTree(atree);
-		}
-		pi++;
-	}
-}
 
 function getBaseName(url)
 {
