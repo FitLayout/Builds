@@ -58,8 +58,8 @@ function processAllPages(listfile, destdir)
 	}
 }
 
-//configureExample('Segm', 2);
-//var destdir = DESTDIR + "/businessinsider";
+//configureExample('Segm', 4);
+//var destdir = DESTDIR + "/reuters";
 //processAllPages(destdir + "/urls", destdir);
 
 //processPage('https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html');
