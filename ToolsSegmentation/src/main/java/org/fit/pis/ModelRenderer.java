@@ -19,6 +19,7 @@ import org.fit.cssbox.layout.ReplacedBox;
 import org.fit.cssbox.layout.TextBox;
 import org.fit.cssbox.render.BoxRenderer;
 import org.fit.cssbox.render.GraphicsRenderer;
+import org.fit.cssbox.render.Transform;
 
 import cz.vutbr.web.css.CSSProperty.TextDecoration;
 
@@ -44,7 +45,7 @@ public class ModelRenderer extends GraphicsRenderer implements BoxRenderer {
         Color c;
 
         AffineTransform origAt = null;
-        AffineTransform at = this.createTransform(box);
+        AffineTransform at = Transform.createTransform(box);
         if (at != null) {
             origAt = this.g.getTransform();
             this.g.transform(at);
@@ -201,7 +202,7 @@ public class ModelRenderer extends GraphicsRenderer implements BoxRenderer {
 
         AffineTransform origAt = null;
         if (box instanceof ElementBox) {
-            AffineTransform at = this.createTransform((ElementBox) box);
+            AffineTransform at = Transform.createTransform((ElementBox) box);
             if (at != null) {
                 origAt = this.g.getTransform();
                 this.g.transform(at);
