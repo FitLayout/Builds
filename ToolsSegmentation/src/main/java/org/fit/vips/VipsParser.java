@@ -69,7 +69,8 @@ public class VipsParser {
 			this._vipsBlocks = new VipsBlock();
 			_visualBlocksCount = 0;
 
-			constructVipsBlockTree(_viewport.getElementBoxByName("body", false), _vipsBlocks);
+			//constructVipsBlockTree(_viewport.getElementBoxByName("body", false), _vipsBlocks);
+            constructVipsBlockTree(_viewport, _vipsBlocks);
 			divideVipsBlockTree(_vipsBlocks);
 
 			getVisualBlocksCount(_vipsBlocks);

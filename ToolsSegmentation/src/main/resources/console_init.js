@@ -31,6 +31,7 @@ function processPage(url, destdir)
 	};
 	srcConfig.url = url;
 	proc.renderPage('FitLayout.CSSBox', srcConfig);
+	proc.drawToImage(destdir+"/"+getBaseName(url)+'-clean.png');
 
 	//BCS and VIPS output
 	var vp = proc.boxProviders.get('FitLayout.CSSBox').viewport;
@@ -58,8 +59,8 @@ function processAllPages(listfile, destdir)
 	}
 }
 
-//configureExample('Segm', 6);
-//var destdir = DESTDIR + "/bi2";
+//configureExample('Segm', 9);
+//var destdir = DESTDIR + "/idnes-clanek";
 //processAllPages(destdir + "/urls", destdir);
 
 //processPage('https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html');

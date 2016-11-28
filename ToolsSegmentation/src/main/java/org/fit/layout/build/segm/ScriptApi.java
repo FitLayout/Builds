@@ -89,7 +89,7 @@ public class ScriptApi implements ScriptObject
         Rectangle r;
 
         r = new Rectangle(view.getWidth(), view.getHeight());
-        bcs = new BCSProcessor(basePath, nameBase, r, view.getRootBox());
+        bcs = new BCSProcessor(basePath, nameBase, r, view);
         vips = new VIPSProcessor(basePath, nameBase, view);
         (new TextOutput(bcs.getAreas())).save(basePath+nameBase+"-boxes.txt");
 
