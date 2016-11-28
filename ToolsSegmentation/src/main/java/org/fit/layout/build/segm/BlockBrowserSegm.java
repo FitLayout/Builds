@@ -65,8 +65,8 @@ public class BlockBrowserSegm extends BlockBrowser
                     
                     //URL url = new URL(localpath + "/test/ceur/volumes/Vol-1317.html");
                     //URL url = new URL("https://www.novinky.cz/zahranicni/amerika/419186-clintonove-hati-sanci-jeji-druha-dcera.html");
-                    //URL url = new URL("http://www.businessinsider.com/mike-pompeo-cia-director-trump-2016-11");
-                    URL url = new URL("http://ekonomika.idnes.cz/novela-trestniho-zakona-umozni-stihat-firmy-fn0-/ekonomika.aspx?c=A161122_133352_ekonomika_fih");
+                    URL url = new URL("http://www.businessinsider.com/mike-pompeo-cia-director-trump-2016-11");
+                    //URL url = new URL("http://ekonomika.idnes.cz/novela-trestniho-zakona-umozni-stihat-firmy-fn0-/ekonomika.aspx?c=A161122_133352_ekonomika_fih");
                     //URL url = new URL("http://www.reuters.com/article/us-usa-trump-idUSKBN13H1DZ");
                     //URL url = new URL("https://www.tagesschau.de/ausland/eu-parlament-tuerkei-107.html");
                     //URL url = new URL("https://ria.ru/world/20161123/1481962702.html");
