@@ -75,7 +75,11 @@ public class BlockBrowserSegm extends BlockBrowser
                     //URL url = new URL("http://zpravy.idnes.cz/archiv.aspx?strana=1");
                     //URL url = new URL("https://www.novinky.cz/zahranicni/evropa/420762-spolu-nebo-vubec-par-patnactiletych-rusu-se-kvuli-zakazane-lasce-zastrelil.html");
                     //URL url = new URL("http://www.reuters.com/article/us-usa-congress-senate-trump-idUSKBN13H111");
-                    URL url = new URL("http://www.businessinsider.com/trending");
+                    //URL url = new URL("http://www.businessinsider.com/trending");
+                    //URL url = new URL("http://www.reuters.com/news/archive/politicsNews?view=page&page=1&pageSize=10");
+                    //URL url = new URL("https://www.novinky.cz/archiv?id=8&date=1.11.2016");
+                    //URL url = new URL("http://www.reuters.com/article/us-usa-trump-carrier-idUSKBN13J1MR");
+                    URL url = new URL("https://www.novinky.cz/internet-a-pc/421417-google-postihl-velky-vypadek-nefunguje-youtube-ani-gmail.html");
                         
                     browser.setLocation(url.toString());
                         
