@@ -1,5 +1,7 @@
 println("RUN-OUTPUT");
 
+var destdir = ".";
+
 //CSSBox default redndering parametres
 proc.setServiceParams("FitLayout.CSSBox", {
 	width: 1200,
@@ -36,7 +38,7 @@ function processPage(url)
 	};
 	srcConfig.url = url;
 	proc.renderPage('FitLayout.CSSBox', srcConfig);
-	proc.drawToImage("./"+getBaseName(url)+'-clean.png');
+	proc.drawToImage(destdir + "/"+getBaseName(url)+'-clean.png');
 
 	//BCS and VIPS output
 	var vp = proc.boxProviders.get('FitLayout.CSSBox').viewport;
