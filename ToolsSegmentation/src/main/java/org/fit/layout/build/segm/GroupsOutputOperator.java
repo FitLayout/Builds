@@ -7,9 +7,13 @@ package org.fit.layout.build.segm;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.fit.layout.api.Parameter;
 import org.fit.layout.impl.BaseOperator;
 import org.fit.layout.impl.DefaultArea;
+import org.fit.layout.impl.ParameterString;
 import org.fit.layout.model.Area;
 import org.fit.layout.model.AreaTree;
 import org.fit.layout.model.Rectangular;
@@ -20,9 +24,6 @@ import org.fit.layout.model.Rectangular;
  */
 public class GroupsOutputOperator extends BaseOperator
 {
-    protected final String[] paramNames = { "filename" };
-    protected final ValueType[] paramTypes = { ValueType.STRING };
-
     private String filename;
     
     public GroupsOutputOperator()
@@ -60,15 +61,11 @@ public class GroupsOutputOperator extends BaseOperator
     }
 
     @Override
-    public String[] getParamNames()
+    public List<Parameter> defineParams()
     {
-        return paramNames;
-    }
-
-    @Override
-    public ValueType[] getParamTypes()
-    {
-        return paramTypes;
+        List<Parameter> ret = new ArrayList<>(1);
+        ret.add(new ParameterString("filename"));
+        return ret;
     }
 
     public String getFilename()
