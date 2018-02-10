@@ -108,7 +108,7 @@ public class GroupsOutputOperator extends BaseOperator
             Rectangular b = root.getBounds();
             out.println(b.getX1() + "," + b.getY1() + "," + b.getWidth() + "," + b.getHeight());
         }
-        for (Area child : root.getChildAreas())
+        for (Area child : root.getChildren())
             recursiveOutputGroups(child, out);
     }
     
