@@ -62,17 +62,17 @@
 		<dependency>
 			<groupId>cz.vutbr.fit.layout</groupId>
 			<artifactId>layout-tools</artifactId>
-			<version>0.0.4-SNAPSHOT</version>
+			<version>0.0.5-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>cz.vutbr.fit.layout</groupId>
 			<artifactId>layout-storage-rdf</artifactId>
-			<version>0.0.4-SNAPSHOT</version>
+			<version>0.0.5-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>cz.vutbr.fit.layout</groupId>
 			<artifactId>segment-annotator</artifactId>
-			<version>0.0.4-SNAPSHOT</version>
+			<version>0.0.5-SNAPSHOT</version>
 		</dependency>
         <dependency>
             <groupId>net.sourceforge.jsi</groupId>
